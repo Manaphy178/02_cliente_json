@@ -3,20 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <title>Insert title here</title>
-	
   </head>
   <body>
     <div style="text-align: center">
       Bienvenido a la parte publica de la tienda de libros
     </div>
-    <div>cargando...</div>
+    <div>
+      <button id="boton_productos">VER LISTADO DE PRODUCTOS</button>
+    </div>
+    <div id="contenedor">cargando...</div>
+    <script src="jquery.js"></script>
     <script type="text/javascript">
-    // Esto es javascript
-	// Vamos a pedir informacion a un servicio en el servidor, para recibir
-	// un listado de productos
+      // Esto es javascript
+      // Vamos a pedir informacion a un servicio en el servidor, para recibir
+      // un listado de productos
 
-	// mandar informacion o recibirla desde javascript es una tecnica que se llama AJAX
-	// para hacer AJAX con js vamos a usar la libreria mas conocida de js: jQuery
+      // mandar informacion o recibirla desde javascript es una tecnica que se llama AJAX
+      // para hacer AJAX con js vamos a usar la libreria mas conocida de js: jQuery
+
+      // jquery se usa a traves de la variable $ no confundir con cuando usamos $ en jsp
+      $("#contenedor").html("jquery importado correctamente");
+      // Vamos a comunicarnos con el servicio de producto:
+      // cuando se haga click en el boton
+      $("#boton_productos").click(function name() {
+        alert("comenzamos comunicacion con el servicio");
+        $.ajax("ServicioProductos").done(function (respuesta) {
+          alert("recibido del servidor" + respuesta);
+        });
+      });
     </script>
   </body>
 </html>
