@@ -25,12 +25,28 @@
       $("#contenedor").html("jquery importado correctamente");
       // Vamos a comunicarnos con el servicio de producto:
       // cuando se haga click en el boton
-      $("#boton_productos").click(function name() {
-        alert("comenzamos comunicacion con el servicio");
+      $("#boton_productos").click(function () {
+        alert("comenzamos comunicacion con el servicio")
         $.ajax("ServicioProductos").done(function (respuesta) {
-          alert("recibido del servidor" + respuesta);
+          // vamos a procesar la respuesta con el json de los libros
+          // transformamos el json recibido a array de javascript:
+          let sombreros = JSON.parse(respuesta);
+          console.log(respuesta);
+          console.log(sombreros);
+          let texto_html = "";
+          for (s in sombreros) {
+            texto_html += "<div>";
+            texto_html +=
+              sombreros[s].nombre +
+              " " +
+              sombreros[s].desc +
+              " " +
+              sombreros[s].precio + "&euro;";
+            texto_html += "</div>";
+          } //end for
+          $("#contenedor").html(texto_html)
         });
-      });
+      }); // fin ajax
     </script>
   </body>
 </html>
